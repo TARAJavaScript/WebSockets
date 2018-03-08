@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 
@@ -12,6 +14,12 @@ const theURL = "127.0.0.1:8000"
 var upgrader = websocket.Upgrader{} // use default options
 
 func echo(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Println("request header: ", r.Header)
+
+	body, _ := ioutil.ReadAll(r.Body)
+
+	fmt.Println("body: ", body)
 
 	webSocketHandle, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {

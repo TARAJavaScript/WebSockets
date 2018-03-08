@@ -33,6 +33,7 @@ window.addEventListener("load", function(evt) {
         ws.onerror = function(evt) {
             print("ERROR: " + evt.data);
         }
+		console.log('socket:', ws);
         return false;
     };
 
